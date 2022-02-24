@@ -57,6 +57,7 @@ window.addEventListener('DOMContentLoaded',  async() => {
  btnsEdit.forEach((btn) => {
      btn.addEventListener('click', async(e) =>{
          const doc = await getTask(e.target.dataset.id)
+         moverEditData();
          const  task = doc.data()
          taskForm['Lib-Id'].value = task.LibIdentificador
          taskForm['Lib-Cat'].value = task.LibCategoria
@@ -100,9 +101,10 @@ taskForm.addEventListener('submit', (e) => {
      if (!editStatus){
        saveTask(LibIdentificador, LibCategoria, LibName, LibCedula, LibVto, LibObservaciones, LibPuntos, LibStatus);
     initIMG();
+    moverGuarData();
     }else{ 
         updateTask(id, {LibIdentificador, LibCategoria, LibName, LibCedula, LibVto, LibObservaciones, LibPuntos, LibStatus})
-        
+        moverGuarData();
          editStatus = false;
     initIMG(); 
     }    
@@ -197,6 +199,17 @@ function buscarConductor(){
     } */
     console.log("buscando conductor");
     console.log("Datos de libreta buscada : " +LibretasFre2.LibIdentificador);
-
+    moverbuscarData();
 }
+
+function moverGuarData(){
+    window.scrollTo(0, 3900);
+}
+function moverbuscarData(){
+    window.scrollTo(0, 2200);
+}
+function moverEditData(){
+    window.scrollTo(0, 1200);
+}
+
 
